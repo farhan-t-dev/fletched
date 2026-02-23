@@ -1,65 +1,69 @@
 import React from 'react';
-import { ShieldCheck, Mail, Lock, Database } from 'lucide-react';
+import { ShieldCheck, Mail, Lock, Database, Target } from 'lucide-react';
+import AnimatedSection from '../components/ui/AnimatedSection';
 
 const Privacy: React.FC = () => {
   return (
-    <div className="bg-stone min-h-screen py-24">
+    <div className="bg-tactical-black min-h-screen py-32">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <ShieldCheck className="h-16 w-16 text-forest mx-auto mb-6" />
-          <h1 className="text-4xl md:text-5xl font-bold text-forest mb-6 tracking-tight">Privacy Policy</h1>
-          <p className="text-lg text-forest/70 font-medium">Your data, your privacy, your peace of mind.</p>
-          <div className="h-1.5 w-24 bg-gold mx-auto mt-8 rounded-full" />
-        </div>
+        <AnimatedSection className="text-center mb-24">
+          <div className="w-20 h-20 bg-safety-orange/10 border border-safety-orange/20 rounded-full flex items-center justify-center mx-auto mb-8">
+             <ShieldCheck className="h-10 w-10 text-safety-orange" />
+          </div>
+          <h1 className="text-4xl md:text-7xl font-black italic uppercase tracking-tighter text-white mb-6">Privacy Policy</h1>
+          <p className="text-xl text-white/40 font-medium">Your setup. Your data. Your privacy.</p>
+        </AnimatedSection>
 
-        <div className="prose prose-forest prose-lg max-w-none bg-forest/5 p-12 rounded-3xl border border-forest/5">
-          <p className="mb-6 font-semibold text-forest/80 italic">Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+        <AnimatedSection delay={0.2} className="bg-tactical-gray p-12 rounded-3xl border border-white/5 shadow-2xl">
+          <p className="mb-12 font-black text-safety-orange uppercase tracking-[0.3em] text-[10px]">Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
           
-          <h2 className="text-2xl font-bold text-forest mt-10 mb-4 tracking-tight flex items-center">
-            <Lock className="h-6 w-6 mr-3 text-gold" />
-            Introduction
-          </h2>
-          <p className="text-forest/70 mb-8 leading-relaxed font-medium">
-            At Fletched, we take your privacy seriously. This policy explains how we collect, use, and protect your information when you use our mobile application and related services.
-          </p>
+          <div className="space-y-12">
+            <section>
+              <h2 className="text-2xl font-black italic uppercase tracking-tighter text-white mb-6 flex items-center">
+                <Lock className="h-6 w-6 mr-3 text-safety-orange" />
+                Data Integrity
+              </h2>
+              <p className="text-white/50 mb-8 leading-relaxed font-medium">
+                At Bow Ballistics, we understand that your bow setups and hunting configurations are private. This policy details our commitment to data security and transparency.
+              </p>
+            </section>
 
-          <h2 className="text-2xl font-bold text-forest mt-10 mb-4 tracking-tight flex items-center">
-             <Database className="h-6 w-6 mr-3 text-gold" />
-             Information We Collect
-          </h2>
-          <p className="text-forest/70 mb-4 leading-relaxed font-medium">
-            We collect information that you provide directly to us when you create an account, such as:
-          </p>
-          <ul className="list-disc pl-6 space-y-2 text-forest/70 mb-8 font-medium">
-            <li>Name and email address</li>
-            <li>Archery performance data (shot logs, scores)</li>
-            <li>Location data (only if you grant permission for mapping features)</li>
-            <li>Device information and usage statistics</li>
-          </ul>
+            <section>
+              <h2 className="text-2xl font-black italic uppercase tracking-tighter text-white mb-6 flex items-center">
+                 <Database className="h-6 w-6 mr-3 text-safety-orange" />
+                 Information Collection
+              </h2>
+              <p className="text-white/50 mb-6 leading-relaxed font-medium">
+                To provide cloud synchronization across your iOS devices, we collect specific data points:
+              </p>
+              <ul className="space-y-4 text-white/50 font-bold text-sm italic uppercase tracking-widest">
+                <li className="flex items-center space-x-3"><Target className="h-4 w-4 text-safety-orange" /><span>Secure User Credentials (bcrypt hashed)</span></li>
+                <li className="flex items-center space-x-3"><Target className="h-4 w-4 text-safety-orange" /><span>Bow Specifications (Brand, Model, Speed)</span></li>
+                <li className="flex items-center space-x-3"><Target className="h-4 w-4 text-safety-orange" /><span>Arrow Ballistics Data (Weight, KE logs)</span></li>
+              </ul>
+            </section>
 
-          <h2 className="text-2xl font-bold text-forest mt-10 mb-4 tracking-tight">How We Use Your Data</h2>
-          <p className="text-forest/70 mb-8 leading-relaxed font-medium">
-            Your data is used to provide and improve our services, including personalized performance insights and mapping tools. We do not sell your personal data to third parties.
-          </p>
-
-          <h2 className="text-2xl font-bold text-forest mt-10 mb-4 tracking-tight flex items-center">
-             <Mail className="h-6 w-6 mr-3 text-gold" />
-             Contact Us
-          </h2>
-          <p className="text-forest/70 mb-4 leading-relaxed font-medium">
-            If you have any questions about this Privacy Policy, please contact our privacy officer at:
-          </p>
-          <p className="font-bold text-forest mb-12">
-            privacy@fletchedapp.com
-          </p>
+            <section>
+              <h2 className="text-2xl font-black italic uppercase tracking-tighter text-white mb-6 flex items-center">
+                 <Mail className="h-6 w-6 mr-3 text-safety-orange" />
+                 Communications
+              </h2>
+              <p className="text-white/50 mb-6 leading-relaxed font-medium">
+                We use your email exclusively for account management and password reset operations via the Resend API. We do not share your contact information with third-party advertisers.
+              </p>
+              <p className="font-black text-white bg-safety-orange inline-block px-4 py-2 rounded-sm text-xs italic tracking-widest uppercase">
+                privacy@bowballistics.com
+              </p>
+            </section>
+          </div>
           
-          <div className="mt-12 p-8 bg-forest text-stone rounded-2xl">
-             <h3 className="text-xl font-bold mb-4">Compliance Notice</h3>
-             <p className="text-stone/70 text-sm font-medium">
-               This Privacy Policy is intended for the purpose of iOS App Store Review compliance and follows general industry standards for mobile application privacy transparency.
+          <div className="mt-16 p-8 bg-tactical-black border border-white/5 rounded-xl">
+             <h3 className="text-sm font-black italic uppercase tracking-widest text-white mb-4">Compliance Notice</h3>
+             <p className="text-white/30 text-xs font-bold leading-relaxed uppercase tracking-tighter">
+               This Privacy Policy is designed to comply with iOS App Store Review guidelines. For specific GDPR or CCPA requests, contact our legal department at the address provided above.
              </p>
           </div>
-        </div>
+        </AnimatedSection>
       </div>
     </div>
   );

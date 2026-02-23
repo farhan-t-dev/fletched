@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Mail, MessageCircle, Send, CheckCircle } from 'lucide-react';
+import { Mail, MessageCircle, Send, CheckCircle, ArrowRight, Shield, Target } from 'lucide-react';
+import AnimatedSection from '../components/ui/AnimatedSection';
+import Button from '../components/ui/Button';
 
 const Support: React.FC = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -10,94 +12,115 @@ const Support: React.FC = () => {
   };
 
   return (
-    <div className="bg-stone min-h-screen py-24">
+    <div className="bg-tactical-black min-h-screen py-32 overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <MessageCircle className="h-16 w-16 text-forest mx-auto mb-6" />
-          <h1 className="text-4xl md:text-5xl font-bold text-forest mb-6 tracking-tight">Support & Contact</h1>
-          <p className="text-lg text-forest/70 font-medium">Have a question or need assistance? We're here to help.</p>
-          <div className="h-1.5 w-24 bg-gold mx-auto mt-8 rounded-full" />
-        </div>
+        <AnimatedSection className="text-center mb-24">
+          <div className="w-20 h-20 bg-safety-orange/10 border border-safety-orange/20 rounded-full flex items-center justify-center mx-auto mb-8">
+             <MessageCircle className="h-10 w-10 text-safety-orange" />
+          </div>
+          <h1 className="text-4xl md:text-7xl font-black italic uppercase tracking-tighter text-white mb-6">Technical Support</h1>
+          <p className="text-xl text-white/40 font-medium">Have a question or need assistance? We're here to help.</p>
+        </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 gap-12 bg-forest/5 p-12 rounded-3xl border border-forest/5 items-start">
-          <div className="space-y-12 pr-6">
-            <h2 className="text-3xl font-bold text-forest mb-8 tracking-tight">Get in Touch</h2>
-            <div className="flex items-start space-x-6 p-6 bg-stone rounded-2xl border border-forest/10 hover:border-gold/30 transition-all">
-               <Mail className="h-8 w-8 text-gold flex-shrink-0" />
+        <div className="grid md:grid-cols-2 gap-12 bg-tactical-gray p-12 rounded-3xl border border-white/5 items-start relative overflow-hidden">
+          <AnimatedSection delay={0.2} className="space-y-12 pr-6">
+            <h2 className="text-3xl font-black italic uppercase tracking-tighter text-white mb-8">Get in Touch</h2>
+            <div className="flex items-start space-x-6 p-8 bg-tactical-black border border-white/5 rounded-2xl hover:border-safety-orange/30 transition-all cursor-default group">
+               <Mail className="h-8 w-8 text-safety-orange flex-shrink-0 group-hover:scale-110 transition-transform" />
                <div>
-                  <h3 className="text-xl font-bold text-forest mb-2">Email Us</h3>
-                  <p className="text-forest/70 font-medium">support@fletchedapp.com</p>
-                  <p className="text-xs text-forest/40 mt-2 italic font-semibold uppercase tracking-widest">Average response time: &lt; 24h</p>
+                  <h3 className="text-xl font-black italic uppercase tracking-tighter text-white mb-2">Email Support</h3>
+                  <p className="text-white/50 font-bold text-xs uppercase italic tracking-widest select-all">support@bowballistics.com</p>
+                  <p className="text-[10px] text-white/20 mt-4 font-black uppercase tracking-widest italic">Response time: &lt; 24h</p>
                </div>
             </div>
 
-            <div className="p-10 bg-forest text-stone rounded-2xl shadow-xl transform -rotate-1">
-               <h3 className="text-2xl font-bold mb-4 tracking-tight leading-tight">We value your feedback.</h3>
-               <p className="text-stone/70 mb-6 font-medium">
-                 Your insights help us build the best possible tool for the archery community. Let us know how we can improve.
+            <div className="p-10 bg-safety-orange text-white rounded-2xl shadow-2xl shadow-safety-orange/20 transform -rotate-1 hover:rotate-0 transition-transform duration-500">
+               <h3 className="text-2xl font-black italic uppercase tracking-tighter mb-4 leading-tight">Professional Guidance.</h3>
+               <p className="text-white/80 mb-6 font-bold text-sm leading-relaxed uppercase tracking-tight italic">
+                 Your feedback helps us build the most accurate tool for the archery community. Let us know how we can improve.
                </p>
+               <div className="h-1 w-12 bg-white/50 rounded-full" />
             </div>
-          </div>
+          </AnimatedSection>
 
-          <div className="bg-stone p-10 rounded-3xl shadow-2xl border border-forest/5">
+          <AnimatedSection delay={0.4} className="bg-tactical-black p-10 rounded-2xl border border-white/5 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-safety-orange/5 rounded-bl-full -mr-16 -mt-16" />
+            
             {!formSubmitted ? (
-              <form onSubmit={handleSubmit} className="space-y-8">
+              <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-bold text-forest mb-3 uppercase tracking-wider">Full Name</label>
+                  <label htmlFor="name" className="block text-[10px] font-black italic text-white/40 mb-2 uppercase tracking-[0.3em]">Full Name</label>
                   <input
                     type="text"
                     id="name"
                     required
-                    className="w-full px-5 py-4 bg-forest/5 border border-forest/10 rounded-xl focus:ring-2 focus:ring-gold focus:border-transparent outline-none transition-all font-medium text-forest"
+                    className="w-full px-5 py-4 bg-tactical-gray border border-white/10 rounded-lg focus:ring-2 focus:ring-safety-orange focus:border-transparent outline-none transition-all font-bold text-white placeholder:text-white/20 italic tracking-widest text-xs uppercase"
                     placeholder="John Doe"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-bold text-forest mb-3 uppercase tracking-wider">Email Address</label>
+                  <label htmlFor="email" className="block text-[10px] font-black italic text-white/40 mb-2 uppercase tracking-[0.3em]">Email Address</label>
                   <input
                     type="email"
                     id="email"
                     required
-                    className="w-full px-5 py-4 bg-forest/5 border border-forest/10 rounded-xl focus:ring-2 focus:ring-gold focus:border-transparent outline-none transition-all font-medium text-forest"
+                    className="w-full px-5 py-4 bg-tactical-gray border border-white/10 rounded-lg focus:ring-2 focus:ring-safety-orange focus:border-transparent outline-none transition-all font-bold text-white placeholder:text-white/20 italic tracking-widest text-xs uppercase"
                     placeholder="john@example.com"
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-bold text-forest mb-3 uppercase tracking-wider">Message</label>
+                  <label htmlFor="message" className="block text-[10px] font-black italic text-white/40 mb-2 uppercase tracking-[0.3em]">Message</label>
                   <textarea
                     id="message"
                     required
                     rows={4}
-                    className="w-full px-5 py-4 bg-forest/5 border border-forest/10 rounded-xl focus:ring-2 focus:ring-gold focus:border-transparent outline-none transition-all font-medium text-forest"
-                    placeholder="Tell us what's on your mind..."
+                    className="w-full px-5 py-4 bg-tactical-gray border border-white/10 rounded-lg focus:ring-2 focus:ring-safety-orange focus:border-transparent outline-none transition-all font-bold text-white placeholder:text-white/20 resize-none italic tracking-widest text-xs uppercase"
+                    placeholder="Describe your issue..."
                   />
                 </div>
-                <button
+                <Button
                   type="submit"
-                  className="w-full flex items-center justify-center px-10 py-5 bg-forest text-stone text-xl font-bold rounded-xl shadow-xl hover:bg-forest/90 transition-all group"
+                  className="w-full h-14 text-sm group"
                 >
                   Send Message
                   <Send className="ml-3 h-5 w-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </button>
+                </Button>
               </form>
             ) : (
-              <div className="text-center py-16 space-y-6 animate-in fade-in zoom-in duration-500">
+              <div className="text-center py-16 space-y-6 animate-in fade-in zoom-in duration-500 relative z-10">
                 <div className="flex justify-center">
-                  <CheckCircle className="h-24 w-24 text-gold mb-6 animate-bounce" />
+                  <div className="w-20 h-20 bg-safety-orange/10 rounded-full flex items-center justify-center animate-bounce">
+                    <CheckCircle className="h-10 w-10 text-safety-orange" />
+                  </div>
                 </div>
-                <h2 className="text-3xl font-bold text-forest tracking-tight">Message Received!</h2>
-                <p className="text-forest/70 text-lg font-medium leading-relaxed">
-                  Thank you for reaching out. A member of the Fletched team will be in touch with you shortly.
+                <h2 className="text-3xl font-black italic uppercase tracking-tighter text-white">Message Received!</h2>
+                <p className="text-white/40 text-sm font-bold leading-relaxed uppercase tracking-tighter italic">
+                  Thank you for reaching out. A technician from the Bow Ballistics team will be in touch with you shortly.
                 </p>
                 <button
                    onClick={() => setFormSubmitted(false)}
-                   className="mt-12 text-forest/50 font-bold hover:text-gold transition-colors underline underline-offset-8"
+                   className="mt-12 text-white/30 font-black italic uppercase tracking-widest hover:text-safety-orange transition-colors flex items-center justify-center mx-auto group text-[10px]"
                 >
-                  Send another message
+                  New Support Ticket <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             )}
-          </div>
+          </AnimatedSection>
+        </div>
+        
+        {/* Help Badges */}
+        <div className="mt-20 flex flex-wrap justify-center gap-8">
+           {[
+             { label: 'Cloud Status', value: 'Operational', icon: <Shield className="h-4 w-4 text-green-500" /> },
+             { label: 'API Version', value: 'v1.0.0', icon: <Target className="h-4 w-4 text-safety-orange" /> },
+             { label: 'System Uptime', value: '99.9%', icon: <Target className="h-4 w-4 text-safety-orange" /> }
+           ].map((badge, i) => (
+             <div key={i} className="flex items-center space-x-2 px-6 py-3 bg-tactical-gray border border-white/5 rounded-full">
+                {badge.icon}
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">{badge.label}:</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white italic">{badge.value}</span>
+             </div>
+           ))}
         </div>
       </div>
     </div>

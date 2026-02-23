@@ -1,121 +1,280 @@
-import React from 'react';
-import { ArrowDownCircle, Target, Compass, Users } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Target, Zap, Shield, Database, ArrowDown, Activity, Settings } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import Button from '../components/ui/Button';
+import AnimatedSection from '../components/ui/AnimatedSection';
 
 const Home: React.FC = () => {
+  const { scrollY } = useScroll();
+  const heroRef = useRef(null);
+
+  const heroY = useTransform(scrollY, [0, 500], [0, 150]);
+  const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
+
+  // Interactive KE Demo State
+  const [arrowWeight, setArrowWeight] = useState(450);
+  const [bowSpeed, setBowSpeed] = useState(285);
+  const [ke, setKe] = useState(0);
+
+  useEffect(() => {
+    // KE = (arrow weight × speed²) ÷ 450,240
+    const calculatedKe = (arrowWeight * Math.pow(bowSpeed, 2)) / 450240;
+    setKe(parseFloat(calculatedKe.toFixed(2)));
+  }, [arrowWeight, bowSpeed]);
+
   const features = [
     {
-      title: 'Precision Tracking',
-      description: 'Log every shot with precision, and track your performance in real-time in any environment.',
-      icon: <Target className="h-8 w-8 text-gold" />,
+      title: 'KE Calculation',
+      description: 'Instant Kinetic Energy results using industry-standard ballistics formulas.',
+      icon: <Zap className="h-6 w-6 text-safety-orange" />,
     },
     {
-      title: 'Outdoor Map Mastery',
-      description: 'Advanced maps tailored for archers, showing wind patterns, terrain details, and more.',
-      icon: <Compass className="h-8 w-8 text-gold" />,
+      title: '49 Game Species',
+      description: 'Comprehensive data for Small, Medium, Large, and Dangerous game animals.',
+      icon: <Target className="h-6 w-6 text-safety-orange" />,
     },
     {
-      title: 'Connect & Share',
-      description: 'Join a community of dedicated archers and hunters to share insights and achievements.',
-      icon: <Users className="h-8 w-8 text-gold" />,
+      title: 'Scoring Algorithm',
+      description: 'Proprietary scoring (0-100) based on ideal arrow weight for each animal.',
+      icon: <Activity className="h-6 w-6 text-safety-orange" />,
+    },
+    {
+      title: 'Cloud Sync',
+      description: 'Sync up to 7 bow profiles across all your iOS devices with Supabase.',
+      icon: <Database className="h-6 w-6 text-safety-orange" />,
     },
   ];
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-tactical-black overflow-hidden font-inter">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-forest text-stone pt-20 pb-32">
-        {/* Subtle texture overlay placeholder */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#F9F7F2_1px,transparent_1px)] [background-size:20px_20px]" />
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 border-b border-white/5">
+        <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-tactical-black/0 via-tactical-black/80 to-tactical-black z-10" />
+          <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] scale-110" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-[radial-gradient(circle_at_center,rgba(255,107,53,0.05)_0%,rgba(0,0,0,0)_60%)] animate-pulse" />
+        </motion.div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center md:text-left md:flex md:items-center">
-            <div className="md:w-3/5">
-              <span className="inline-block px-3 py-1 bg-stone/10 rounded-full text-xs font-semibold tracking-wider uppercase mb-4 text-stone/70">
-                Precision for the Outdoor Archer
-              </span>
-              <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-6">
-                Aim for Perfection.<br />
-                Hit the Bullseye.
-              </h1>
-              <p className="text-xl md:text-2xl text-stone/70 mb-10 max-w-2xl font-light">
-                Fletched is the archery companion that elevates your outdoor and hunting experience. Precise tracking, powerful insights, and dedicated community in your pocket.
-              </p>
-              <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center md:justify-start">
-                <a href="#" className="inline-flex items-center justify-center px-8 py-4 bg-stone text-forest text-lg font-bold rounded-lg shadow-lg hover:bg-stone/90 transition-all transform hover:-translate-y-1">
-                  Download on the App Store
-                </a>
-                <a href="#about" className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-stone/30 text-stone text-lg font-bold rounded-lg hover:bg-stone/10 transition-all">
-                  Learn More
-                </a>
-              </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-center">
+          <motion.div 
+            style={{ opacity: heroOpacity }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="space-y-6"
+          >
+            <div className="inline-flex items-center space-x-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-[0.3em] text-safety-orange">
+              <span className="w-1.5 h-1.5 rounded-full bg-safety-orange animate-ping" />
+              <span>Ballistics Ready / v1.0.0</span>
             </div>
-            {/* App Screen Mockup Placeholder */}
-            <div className="hidden md:flex md:w-2/5 justify-end relative mt-12 md:mt-0">
-              <div className="w-64 h-[520px] bg-stone/5 border-4 border-stone/20 rounded-[3rem] shadow-2xl relative overflow-hidden backdrop-blur-sm">
-                <div className="absolute top-0 w-full h-8 bg-stone/10" />
-                <div className="p-8 pt-12">
-                   <div className="w-full h-12 bg-stone/20 rounded mb-4" />
-                   <div className="w-2/3 h-4 bg-stone/20 rounded mb-2" />
-                   <div className="w-full h-4 bg-stone/20 rounded mb-8" />
-                   <div className="w-full aspect-square bg-forest/50 rounded-xl mb-4 flex items-center justify-center">
-                      <Target className="h-20 w-20 text-stone/20" />
+            
+            <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black italic uppercase tracking-tighter leading-[0.8] transition-all">
+              Precision<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-b from-safety-orange to-[#FF8C66]">Ballistics</span>
+            </h1>
+            
+            <p className="text-lg md:text-2xl text-white/50 max-w-2xl mx-auto font-medium tracking-tight">
+              The professional archery calculator for mobile. Evaluate your setup, track kinetic energy, and hunt ethically with the power of Bow Ballistics.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+              <Button size="lg" className="h-16 px-12 italic border-0">
+                Download on App Store
+              </Button>
+              <Button size="lg" variant="secondary" className="h-16 px-12 italic font-black uppercase tracking-widest text-xs">
+                View Documentation
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+
+        <motion.div 
+          animate={{ y: [0, 15, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/20"
+        >
+           <ArrowDown className="h-8 w-8" />
+        </motion.div>
+      </section>
+
+      {/* Calculator Demo Section */}
+      <section id="demo" className="py-32 relative bg-tactical-gray">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+             <AnimatedSection>
+                <h2 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter mb-8 text-white">
+                  Real-Time<br />Calculation.
+                </h2>
+                <p className="text-xl text-white/50 mb-12 font-medium max-w-lg leading-relaxed">
+                  Experience the precision. Adjust your arrow weight and bow speed to see instant Kinetic Energy (KE) calculations—just like in the app.
+                </p>
+                <div className="space-y-8">
+                   <div className="space-y-4">
+                      <div className="flex justify-between font-black uppercase tracking-widest text-[10px] text-white/40">
+                         <span>Arrow Weight (grains)</span>
+                         <span className="text-safety-orange">{arrowWeight} gr</span>
+                      </div>
+                      <input 
+                        type="range" min="300" max="900" step="1" 
+                        value={arrowWeight} 
+                        onChange={(e) => setArrowWeight(Number(e.target.value))}
+                        className="w-full accent-safety-orange bg-white/5 h-2 rounded-lg cursor-pointer appearance-none"
+                      />
                    </div>
-                   <div className="w-full h-12 bg-gold/30 rounded" />
+                   <div className="space-y-4">
+                      <div className="flex justify-between font-black uppercase tracking-widest text-[10px] text-white/40">
+                         <span>Bow Speed (fps)</span>
+                         <span className="text-safety-orange">{bowSpeed} fps</span>
+                      </div>
+                      <input 
+                        type="range" min="200" max="400" step="1" 
+                        value={bowSpeed} 
+                        onChange={(e) => setBowSpeed(Number(e.target.value))}
+                        className="w-full accent-safety-orange bg-white/5 h-2 rounded-lg cursor-pointer appearance-none"
+                      />
+                   </div>
                 </div>
-              </div>
-              {/* Floating element 1 */}
-              <div className="absolute -left-12 bottom-20 w-48 p-4 bg-earth rounded-xl shadow-xl text-stone/90 text-sm font-semibold flex items-center space-x-3 transform -rotate-6 border border-stone/10">
-                <div className="w-8 h-8 rounded-full bg-gold/40 flex items-center justify-center"><ArrowDownCircle className="h-5 w-5" /></div>
-                <span>98% Accuracy Rate</span>
-              </div>
-            </div>
+             </AnimatedSection>
+
+             <AnimatedSection className="relative">
+                <div className="bg-tactical-black border-2 border-white/5 p-12 rounded-[2rem] shadow-2xl relative overflow-hidden group">
+                   <div className="absolute top-0 right-0 p-8">
+                      <Zap className="h-12 w-12 text-safety-orange/20" />
+                   </div>
+                   <div className="relative z-10 text-center">
+                      <h4 className="font-black uppercase tracking-widest text-[10px] text-white/40 mb-4">Calculated Kinetic Energy</h4>
+                      <div className="text-8xl md:text-9xl font-black italic tracking-tighter text-white mb-2">
+                         {ke}
+                      </div>
+                      <div className="text-safety-orange font-black uppercase tracking-[0.2em] text-sm">
+                         ft-lbs of kinetic energy
+                      </div>
+                   </div>
+                   
+                   <div className="mt-12 pt-12 border-t border-white/5 grid grid-cols-2 gap-8">
+                      <div className="text-center">
+                         <div className="text-[10px] font-black uppercase tracking-widest text-white/30 mb-2">Game Class</div>
+                         <div className="text-xl font-bold text-white uppercase italic">Large Game</div>
+                      </div>
+                      <div className="text-center">
+                         <div className="text-[10px] font-black uppercase tracking-widest text-white/30 mb-2">Setup Status</div>
+                         <div className="text-xl font-bold text-green-500 uppercase italic">Ready</div>
+                      </div>
+                   </div>
+                </div>
+                {/* Visual HUD decor */}
+                <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-safety-orange" />
+                <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-safety-orange" />
+             </AnimatedSection>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-24 bg-stone relative">
+      {/* Features Grid */}
+      <section id="about" className="py-32 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl font-bold text-forest mb-6 tracking-tight">Built for the Hunt</h2>
-            <div className="h-1.5 w-24 bg-gold mx-auto mb-8 rounded-full" />
-            <p className="text-lg text-forest/70 font-medium">
-              We understand that the field requires different tools. Fletched was built from the ground up to support archers in the wilderness.
+          <AnimatedSection className="mb-24 text-center max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter mb-8 text-white">Built for the Hunt.</h2>
+            <p className="text-xl text-white/50 font-medium">
+              A comprehensive toolset designed for professional archers who demand reliability and precision.
             </p>
-          </div>
+          </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {features.map((feature, index) => (
-              <div key={index} className="p-10 bg-forest/5 rounded-3xl border border-forest/5 hover:border-gold/30 transition-all group">
-                <div className="mb-6 p-4 inline-block bg-forest text-stone rounded-2xl group-hover:scale-110 transition-transform">
-                  {feature.icon}
+              <AnimatedSection key={index} delay={index * 0.1} className="group">
+                <div className="h-full p-10 bg-tactical-gray border border-white/5 rounded-2xl hover:bg-tactical-light hover:border-safety-orange/50 transition-all duration-300">
+                  <div className="mb-8 w-14 h-14 bg-safety-orange/10 border border-safety-orange/20 rounded-lg flex items-center justify-center group-hover:bg-safety-orange group-hover:text-white transition-colors duration-300">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-black italic uppercase tracking-tighter mb-4 text-white">{feature.title}</h3>
+                  <p className="text-white/40 font-medium text-sm leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
-                <h3 className="text-2xl font-bold text-forest mb-4 tracking-tight">{feature.title}</h3>
-                <p className="text-forest/70 leading-relaxed font-medium">
-                  {feature.description}
-                </p>
-              </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-32 bg-earth text-stone relative overflow-hidden">
-         <div className="absolute inset-0 opacity-5 pointer-events-none bg-[repeating-linear-gradient(45deg,transparent,transparent_20px,#F9F7F2_20px,#F9F7F2_21px)]" />
-         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-            <h2 className="text-4xl md:text-5xl font-bold mb-10 tracking-tight leading-tight">Elevate your game today.<br /> Download Fletched.</h2>
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center items-center">
-              <a href="#" className="w-full sm:w-auto px-10 py-5 bg-stone text-forest text-xl font-bold rounded-xl shadow-xl hover:scale-105 transition-all">
-                Get on App Store
-              </a>
-              <a href="/support" className="w-full sm:w-auto px-10 py-5 bg-forest text-stone text-xl font-bold rounded-xl shadow-xl border border-stone/10 hover:bg-forest/80 transition-all">
-                Need Help?
-              </a>
+      {/* App Showcase */}
+      <section className="py-32 relative bg-tactical-gray border-y border-white/5">
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col lg:flex-row items-center gap-20">
+               <AnimatedSection className="lg:w-1/2">
+                  <div className="relative group">
+                     {/* Mockup */}
+                     <div className="relative w-[300px] h-[600px] mx-auto bg-black rounded-[3rem] border-[12px] border-tactical-light overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)]">
+                        <div className="absolute inset-0 bg-tactical-black p-6 pt-12">
+                           <div className="flex justify-between items-center mb-12">
+                              <Target className="h-6 w-6 text-safety-orange" />
+                              <Settings className="h-6 w-6 text-white/20" />
+                           </div>
+                           <div className="space-y-6">
+                              <div className="h-4 w-1/2 bg-white/10 rounded-full" />
+                              <div className="h-[200px] w-full bg-white/5 rounded-3xl border border-white/10 flex items-center justify-center">
+                                 <div className="text-4xl font-black text-safety-orange">94.2</div>
+                              </div>
+                              <div className="space-y-4 pt-4">
+                                 {[1,2,3].map(i => (
+                                    <div key={i} className="h-12 w-full bg-white/5 border border-white/10 rounded-xl" />
+                                 ))}
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     {/* Decorative overlays */}
+                     <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-safety-orange/10 blur-[120px] rounded-full" />
+                  </div>
+               </AnimatedSection>
+               
+               <AnimatedSection className="lg:w-1/2 space-y-12">
+                  <div>
+                    <h2 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter mb-8 text-white">Cloud Synced Bow Profiles.</h2>
+                    <p className="text-xl text-white/50 font-medium max-w-lg leading-relaxed mb-8">
+                      Manage up to 7 unique bow configurations. Set a default bow that auto-populates the calculator, and sync everything securely with your account.
+                    </p>
+                    <ul className="space-y-4">
+                       {[
+                         'Full bow specifications (Brand, Model, Draw weight)',
+                         'Broadhead and arrow weight tracking',
+                         'Automatic default bow population',
+                         'Secure PostgreSQL / Supabase backend'
+                       ].map((item, i) => (
+                         <li key={i} className="flex items-center space-x-3 text-white/70 font-bold text-sm italic uppercase tracking-widest">
+                            <Shield className="h-5 w-5 text-safety-orange" />
+                            <span>{item}</span>
+                         </li>
+                       ))}
+                    </ul>
+                  </div>
+                  <Button size="lg" className="h-16 px-12 italic border-0">
+                    Get Started Free
+                  </Button>
+               </AnimatedSection>
             </div>
-            <p className="mt-8 text-stone/50 font-medium italic">
-              Available exclusively for iOS.
-            </p>
+         </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-32 relative overflow-hidden">
+         <div className="absolute inset-0 bg-safety-orange opacity-5 pointer-events-none" />
+         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <AnimatedSection>
+               <h2 className="text-5xl md:text-8xl font-black italic uppercase tracking-tighter mb-8 text-white">Aim Small. Miss Small.</h2>
+               <p className="text-2xl text-white/50 mb-12 max-w-2xl mx-auto font-medium">
+                 Ready to optimize your archery setup? Download the only calculator designed for the modern hunter.
+               </p>
+               <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                 <Button size="lg" className="h-20 px-16 text-xl">
+                    App Store
+                 </Button>
+                 <Button size="lg" variant="outline" className="h-20 px-16 text-xl border-white/10 text-white hover:bg-white/5">
+                    Contact Sales
+                 </Button>
+               </div>
+            </AnimatedSection>
          </div>
       </section>
     </div>

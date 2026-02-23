@@ -1,10 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-forest: #1B3022;
-  --color-earth: #4E3B31;
-  --color-stone: #F9F7F2;
-  --color-gold: #D4AF37;
+  --color-tactical-black: #0A0A0A;
+  --color-tactical-gray: #121212;
+  --color-tactical-light: #1E1E1E;
+  --color-safety-orange: #FF6B35;
+  --color-safety-orange-hover: #E85A24;
+  --color-slate-text: #A1A1AA;
   --font-inter: "Inter", sans-serif;
 }
 
@@ -13,9 +15,9 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: var(--color-forest);
-  background-color: var(--color-stone);
+  color-scheme: dark;
+  color: #FFFFFF;
+  background-color: var(--color-tactical-black);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -27,4 +29,20 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom Tactical Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-tactical-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-tactical-light);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-safety-orange);
 }
