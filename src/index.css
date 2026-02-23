@@ -1,28 +1,41 @@
 @import "tailwindcss";
 
 @theme {
-  --color-tactical-black: #0A0A0A;
-  --color-tactical-gray: #121212;
-  --color-tactical-light: #1E1E1E;
+  --color-primary: #4A6741;
+  --color-primary-light: #84A98C;
+  --color-accent: #8C7851;
+  --color-background-light: #F9F7F2;
+  --color-background-dark: #121812;
+  --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
+  
+  --color-forest-black: #121812;
+  --color-forest-deep: #242B1F;
+  --color-forest-mid: #3A5A40;
+  --color-forest-accent: #588157;
   --color-safety-orange: #FF6B35;
-  --color-safety-orange-hover: #E85A24;
-  --color-slate-text: #A1A1AA;
-  --font-inter: "Inter", sans-serif;
+  --color-moss: #84A98C;
 }
 
 :root {
-  font-family: var(--font-inter);
+  font-family: var(--font-display);
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: dark;
-  color: #FFFFFF;
-  background-color: var(--color-tactical-black);
+  color-scheme: light dark;
+  color: #1A1F16;
+  background-color: var(--color-background-light);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #F8F9F8;
+    background-color: var(--color-background-dark);
+  }
 }
 
 body {
@@ -32,17 +45,40 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom Tactical Scrollbar */
+.blueprint-grid {
+  background-image: radial-gradient(circle, #4A674112 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.blueprint-x {
+  background-image: linear-gradient(to top right, transparent calc(50% - 1px), #8C785108 50%, transparent calc(50% + 1px)),
+                    linear-gradient(to bottom right, transparent calc(50% - 1px), #8C785108 50%, transparent calc(50% + 1px));
+}
+
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1.5rem;
+}
+
+@media (min-width: 768px) { .masonry-grid { column-count: 2; } }
+@media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+}
+
+/* Organic Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-tactical-black);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-tactical-light);
+  background: #4A674130;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-safety-orange);
+  background: var(--color-primary);
 }

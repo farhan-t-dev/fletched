@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blueprint Gallery | Build Your Vision with Precision</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["'Plus Jakarta Sans'", "Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .blueprint-grid {
+            background-image: radial-gradient(circle, #137fec20 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .blueprint-x {
+            background-image: linear-gradient(to top right, transparent calc(50% - 1px), #137fec15 50%, transparent calc(50% + 1px)),
+                              linear-gradient(to bottom right, transparent calc(50% - 1px), #137fec15 50%, transparent calc(50% + 1px));
+        }
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+        @media (min-width: 768px) { .masonry-grid { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary/30 selection:text-primary">
+<!-- Header -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<nav class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+<div class="flex items-center gap-2 text-primary">
+<div class="size-8 flex items-center justify-center border-2 border-primary rounded-lg">
+<span class="material-symbols-outlined text-xl">architecture</span>
+</div>
+<span class="text-xl font-black tracking-tighter">BLUEPRINT GALLERY</span>
+</div>
+<div class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase text-slate-600 dark:text-slate-400">
+<a class="hover:text-primary transition-colors" href="#features">Features</a>
+<a class="hover:text-primary transition-colors" href="#how-it-works">Workflow</a>
+<a class="hover:text-primary transition-colors" href="#faq">FAQ</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-white px-5 py-2 rounded-lg font-bold text-sm tracking-wide hover:brightness-110 transition-all shadow-lg shadow-primary/20">
+                    DOWNLOAD APP
+                </button>
+</div>
+</nav>
+</header>
+<main class="relative overflow-hidden blueprint-grid">
+<!-- Hero Section -->
+<section class="relative pt-20 pb-16 px-4">
+<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center lg:grid-cols-[1.2fr_0.8fr]">
+<div class="space-y-8 relative z-10">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">precision_manufacturing</span> Version 2.4 Now Live
+                    </div>
+<h1 class="text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight">
+                        Build Your Vision with <span class="text-primary italic">Precision</span>.
+                    </h1>
+<p class="text-lg text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
+                        The bridge between raw ideas and finished iOS app designs. Experience a sophisticated drafting environment tailored for modern creators.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="px-8 py-4 bg-primary text-white rounded-xl font-bold text-lg hover:scale-[1.02] transition-transform flex items-center gap-2">
+                            Start Drafting <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="px-8 py-4 border-2 border-slate-200 dark:border-slate-800 rounded-xl font-bold text-lg hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
+                            View Samples
+                        </button>
+</div>
+<div class="flex items-center gap-6 pt-8 border-t border-slate-200 dark:border-slate-800">
+<div class="flex -space-x-3">
+<div class="size-10 rounded-full border-2 border-background-light dark:border-background-dark bg-slate-200 bg-cover" data-alt="User avatar profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDL1QebDDIeEFVouBjrWCWbd3lfVQOb7E0_-66HZmZtD4SK-9AxIyXEz4M04ttQ15wuyfCmwC5wisVA73PdiOwD20T2kC-GJT9Wp8rs838PY_PqHz1-lBt8pKkazISPhBiKHlBNSo4fTXf7YWBMRRnw6DFRrUaRQuoqkfBL9BgnM8cpYTfz7jxEsJA4x1ZeV-DV-Df0fGLlnkcpkKvGT5CI93le_4ye7r7IUA03y3PH0mpK4JUCyQXwkdkn1mEe1yd89NqCvpnS1kA')"></div>
+<div class="size-10 rounded-full border-2 border-background-light dark:border-background-dark bg-slate-300 bg-cover" data-alt="User avatar profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBsSwNe8jh78nmydaIeqk0zCnCScurMw6EvDcuQrByYcM-ihIJNDjkR8h7xA0uRKNB95gObk4IJbv_DxvKRIycZAztxscomTHRKFmRMt2wXj_F-d81GyV_2KieJ_9NoIve5DGkhrngoYo_Hse3NiWrMkvWLsq1Ic0UcKROIjST7Eyvj-WMr5vh05cbadu21sIzU2W2NEIwraBS3cL8cKwsfg7P6TPfZH0J34pWYcjax4YavpKhSDrbMaURgX5MTZKVHXoOfSEtMkDw')"></div>
+<div class="size-10 rounded-full border-2 border-background-light dark:border-background-dark bg-slate-400 bg-cover" data-alt="User avatar profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA9vSjxuquvwFNfJUKLyJ9R0UkYpcotA41W1Cv0omBrAHL6I0hLKVMNZ2DadHlQuNkRc7L6vDPg4F60w3pZ75SD59-5NUV_w4az6GPOJvBVHemQAIkz6jUYdhTPOjX-m0y8ey1c442o9bvE0l2jd9_YMN3Y9XiQBR7ZgWc5zaF1OmuqXvpko_IzqB-pBHrqgV6KLh0X4h3CQpjMuTzEyrNXPb1XMzDvJDC4lYIgtx81ZsJD9tq3U6Zt1aDYZPY75RB2NbJn7Svp7UY')"></div>
+</div>
+<p class="text-sm font-medium text-slate-500">Trusted by <span class="text-slate-900 dark:text-slate-100 font-bold">12,000+</span> iOS Architects</p>
+</div>
+</div>
+<!-- Hero Mockup Container -->
+<div class="relative flex justify-center lg:justify-end">
+<!-- iPhone Frame Container -->
+<div class="relative w-[300px] h-[600px] bg-slate-900 rounded-[3.5rem] p-3 shadow-2xl border-[12px] border-slate-800 dark:border-slate-950 ring-1 ring-slate-400/20">
+<!-- Notch / Dynamic Island -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-8 bg-slate-900 rounded-b-3xl z-20"></div>
+<!-- Screen Content -->
+<div class="w-full h-full bg-white dark:bg-slate-900 rounded-[2.5rem] overflow-hidden relative">
+<!-- Blueprint Background -->
+<div class="absolute inset-0 blueprint-grid opacity-20"></div>
+<!-- Screenshot Placeholder Area -->
+<div class="relative h-full flex flex-col p-6">
+<div class="mt-8 space-y-4">
+<div class="w-2/3 h-6 bg-primary/10 rounded-full"></div>
+<div class="w-full aspect-[9/16] border-2 border-dashed border-primary/30 rounded-3xl bg-primary/5 flex flex-col items-center justify-center group/screen cursor-pointer hover:bg-primary/10 transition-colors overflow-hidden">
+<span class="material-symbols-outlined text-primary/40 text-5xl mb-2">add_photo_alternate</span>
+<p class="text-[10px] font-bold text-primary/40 uppercase tracking-widest">Attach Screenshot</p>
+<!-- Placeholder for future screenshot -->
+</div>
+<div class="space-y-2">
+<div class="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded"></div>
+<div class="h-2 w-5/6 bg-slate-200 dark:bg-slate-800 rounded"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Buttons -->
+<div class="absolute -left-[14px] top-28 w-[4px] h-12 bg-slate-800 rounded-l-lg"></div>
+<div class="absolute -left-[14px] top-44 w-[4px] h-16 bg-slate-800 rounded-l-lg"></div>
+<div class="absolute -left-[14px] top-64 w-[4px] h-16 bg-slate-800 rounded-l-lg"></div>
+<div class="absolute -right-[14px] top-44 w-[4px] h-24 bg-slate-800 rounded-r-lg"></div>
+</div>
+<!-- Floating Annotation Tags -->
+<div class="absolute -top-4 -right-4 bg-white dark:bg-slate-800 px-3 py-1.5 rounded-lg border border-primary/20 shadow-xl text-[10px] font-mono z-30">
+<span class="text-primary font-bold">DEVICE:</span> iPhone 15 Pro
+    </div>
+<div class="absolute bottom-12 -left-12 bg-white dark:bg-slate-800 px-3 py-1.5 rounded-lg border border-primary/20 shadow-xl text-[10px] font-mono z-30 hidden md:block">
+<span class="text-primary font-bold">RESOLUTION:</span> 1179 x 2556
+    </div>
+</div>
+</div>
+</section>
+<!-- Feature Masonry Grid -->
+<section class="py-24 px-4 bg-white/50 dark:bg-slate-900/30" id="features">
+<div class="max-w-7xl mx-auto">
+<div class="mb-16">
+<h2 class="text-3xl font-black uppercase tracking-tight text-primary mb-2">Feature Repository</h2>
+<p class="text-slate-500">Documenting the technical capabilities of the modern drafting engine.</p>
+</div>
+<div class="masonry-grid">
+<!-- Card 1 -->
+<div class="masonry-item bg-background-light dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-6 hover:border-primary transition-all group">
+<div class="aspect-video mb-6 rounded-lg bg-primary/5 blueprint-x border border-dashed border-primary/30 flex items-center justify-center relative">
+<span class="material-symbols-outlined text-primary text-5xl group-hover:scale-110 transition-transform">architecture</span>
+<div class="absolute bottom-2 right-2 text-[10px] font-mono text-primary/60">LAYER_01</div>
+</div>
+<h3 class="text-xl font-bold mb-2">Smart Drafting</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                            Auto-align tools with precision snapping. Snaps to your layout grid with sub-pixel accuracy automatically.
+                        </p>
+<div class="flex gap-2">
+<span class="text-[10px] font-bold bg-primary/10 text-primary px-2 py-0.5 rounded">AUTO_SNAPPING</span>
+<span class="text-[10px] font-bold bg-primary/10 text-primary px-2 py-0.5 rounded">0.01MM_PRECISION</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="masonry-item bg-background-light dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-6 hover:border-primary transition-all group">
+<div class="aspect-square mb-6 rounded-lg bg-primary/5 blueprint-x border border-dashed border-primary/30 flex items-center justify-center overflow-hidden">
+<div class="relative w-full h-full flex items-center justify-center">
+<div class="absolute w-full h-px bg-primary/20 rotate-45"></div>
+<div class="absolute w-full h-px bg-primary/20 -rotate-45"></div>
+<span class="material-symbols-outlined text-primary text-4xl group-hover:rotate-12 transition-transform">group_add</span>
+</div>
+</div>
+<h3 class="text-xl font-bold mb-2">Live Collaboration</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                            Multi-user cursors with technical label tags. Work with your team in real-time without friction.
+                        </p>
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-primary flex items-center justify-center text-[8px] text-white font-bold">JD</div>
+<span class="text-xs font-mono text-slate-400">Editing Layout.json...</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="masonry-item bg-background-light dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-6 hover:border-primary transition-all group">
+<div class="h-48 mb-6 rounded-lg bg-primary/5 blueprint-x border border-dashed border-primary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-4xl">cloud_sync</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Cloud Sync</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Full version history with branch management. All technical specs and assets are synced securely across all devices.
+                        </p>
+</div>
+<!-- Card 4 -->
+<div class="masonry-item bg-primary text-white rounded-xl p-8 group relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]">terminal</span>
+</div>
+<h3 class="text-2xl font-black mb-4">Export to Swift</h3>
+<p class="text-primary-100/80 text-sm mb-6 leading-relaxed">
+                            One click to generate production-ready SwiftUI code. Bridge the gap from blueprint to build.
+                        </p>
+<button class="bg-white text-primary px-4 py-2 rounded font-bold text-xs uppercase">Copy CLI Command</button>
+</div>
+<!-- Card 5 -->
+<div class="masonry-item bg-background-light dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-6 hover:border-primary transition-all group">
+<div class="h-64 mb-6 rounded-lg bg-primary/5 blueprint-x border border-dashed border-primary/30 flex flex-col items-center justify-center p-4">
+<div class="w-full space-y-4">
+<div class="h-4 bg-primary/20 rounded w-full"></div>
+<div class="h-4 bg-primary/20 rounded w-5/6"></div>
+<div class="h-4 bg-primary/20 rounded w-4/6"></div>
+<div class="h-4 bg-primary/20 rounded w-full"></div>
+</div>
+</div>
+<h3 class="text-xl font-bold mb-2">Component Library</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                            Access over 500+ pre-designed iOS components with blueprint styling.
+                        </p>
+<div class="text-[10px] font-mono text-primary bg-primary/10 p-2 rounded">
+                            import { Button, Nav, TabBar } from "BlueKit"
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works -->
+<section class="py-24 px-4 relative" id="how-it-works">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-black mb-4 uppercase tracking-tighter">The Drafting Process</h2>
+<p class="text-slate-500 max-w-2xl mx-auto">From conceptual sketches to final architecture in three technical phases.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-12 relative">
+<!-- Connector line -->
+<div class="hidden md:block absolute top-12 left-0 w-full h-px border-t border-dashed border-primary/30 z-0"></div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="size-24 rounded-full bg-white dark:bg-slate-800 border-2 border-primary flex items-center justify-center shadow-xl mb-6 group hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary group-hover:text-white transition-colors">edit_square</span>
+</div>
+<h3 class="text-xl font-bold mb-3 uppercase tracking-wide">1. Sketch</h3>
+<p class="text-slate-500 text-sm px-6">Input your raw ideas using our intuitive wireframe toolset. Quick and low-fidelity.</p>
+</div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="size-24 rounded-full bg-white dark:bg-slate-800 border-2 border-primary flex items-center justify-center shadow-xl mb-6 group hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary group-hover:text-white transition-colors">view_quilt</span>
+</div>
+<h3 class="text-xl font-bold mb-3 uppercase tracking-wide">2. Refine</h3>
+<p class="text-slate-500 text-sm px-6">Apply blueprint rules, technical annotations, and component styles with auto-layout.</p>
+</div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="size-24 rounded-full bg-white dark:bg-slate-800 border-2 border-primary flex items-center justify-center shadow-xl mb-6 group hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary group-hover:text-white transition-colors">ios_share</span>
+</div>
+<h3 class="text-xl font-bold mb-3 uppercase tracking-wide">3. Export</h3>
+<p class="text-slate-500 text-sm px-6">Generate SwiftUI code, design specs, and high-res assets ready for development.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-24 px-4 bg-slate-900 text-white relative overflow-hidden" id="faq">
+<div class="absolute inset-0 blueprint-grid opacity-10"></div>
+<div class="max-w-4xl mx-auto relative z-10">
+<div class="mb-16">
+<h2 class="text-3xl font-black uppercase tracking-tight mb-2">Technical Support / FAQ</h2>
+<p class="text-slate-400 font-mono text-xs uppercase tracking-[0.2em]">System.Questions_and_Answers [v2.4]</p>
+</div>
+<div class="space-y-6">
+<div class="p-6 bg-white/5 border border-white/10 rounded-xl hover:border-primary/50 transition-colors group">
+<div class="flex gap-4">
+<span class="text-primary font-mono text-sm">[01]</span>
+<div class="space-y-2">
+<h4 class="font-bold text-lg">How accurate is the Swift code generation?</h4>
+<p class="text-slate-400 text-sm leading-relaxed">Our export engine generates production-ready SwiftUI code with 99.9% layout parity. It maps blueprint constraints directly to Swift layout anchors and stacks.</p>
+</div>
+</div>
+</div>
+<div class="p-6 bg-white/5 border border-white/10 rounded-xl hover:border-primary/50 transition-colors group">
+<div class="flex gap-4">
+<span class="text-primary font-mono text-sm">[02]</span>
+<div class="space-y-2">
+<h4 class="font-bold text-lg">Can I import existing Figma or Sketch designs?</h4>
+<p class="text-slate-400 text-sm leading-relaxed">Currently, Blueprint Gallery is a dedicated drafting tool focused on precision from scratch. We support PNG/SVG reference overlays to help you reconstruct designs with architectural accuracy.</p>
+</div>
+</div>
+</div>
+<div class="p-6 bg-white/5 border border-white/10 rounded-xl hover:border-primary/50 transition-colors group">
+<div class="flex gap-4">
+<span class="text-primary font-mono text-sm">[03]</span>
+<div class="space-y-2">
+<h4 class="font-bold text-lg">Does it support collaborative real-time editing?</h4>
+<p class="text-slate-400 text-sm leading-relaxed">Yes. Multiple architects can work on the same .blueprint file simultaneously with sub-millisecond cursor synchronization and version branching.</p>
+</div>
+</div>
+</div>
+<div class="p-6 bg-white/5 border border-white/10 rounded-xl hover:border-primary/50 transition-colors group">
+<div class="flex gap-4">
+<span class="text-primary font-mono text-sm">[04]</span>
+<div class="space-y-2">
+<h4 class="font-bold text-lg">What are the minimum system requirements?</h4>
+<p class="text-slate-400 text-sm leading-relaxed">Blueprint Gallery is optimized for macOS 13.0+ and iPadOS 16.0+. For the best experience, we recommend M1-series chips or newer for real-time physics snapping.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-16 pt-8 border-t border-white/10 flex justify-center">
+<p class="text-slate-500 text-[10px] font-mono">END_OF_DOCUMENT // CONTACT_SUPPORT_FOR_ADDITIONAL_LOGS</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background-light dark:bg-background-dark border-t border-primary/10 pt-16 pb-8 px-4 blueprint-grid">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 mb-16">
+<div class="col-span-2 space-y-4">
+<div class="flex items-center gap-2 text-primary mb-4">
+<div class="size-6 flex items-center justify-center border-2 border-primary rounded">
+<span class="material-symbols-outlined text-sm">architecture</span>
+</div>
+<span class="text-lg font-black tracking-tighter">BLUEPRINT GALLERY</span>
+</div>
+<p class="text-sm text-slate-500 leading-relaxed max-w-xs">
+                        Designing the future of mobile experiences with architectural precision and modern aesthetics.
+                    </p>
+</div>
+<div>
+<h4 class="font-bold text-xs uppercase tracking-widest mb-6">Product</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#">Feature Set</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Components</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Pricing</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Changelog</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-xs uppercase tracking-widest mb-6">Resources</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#">Documentation</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">API Reference</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Community</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Tutorials</a></li>
+</ul>
+</div>
+<div class="col-span-2">
+<h4 class="font-bold text-xs uppercase tracking-widest mb-6">Stay Annotated</h4>
+<form class="flex gap-2">
+<input class="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 rounded-lg text-sm flex-1 focus:ring-primary focus:border-primary" placeholder="email@address.spec" type="email"/>
+<button class="bg-primary text-white p-2 rounded-lg"><span class="material-symbols-outlined">send</span></button>
+</form>
+<p class="mt-4 text-[10px] text-slate-400 font-mono italic">Subscribing to BUILD_LOGS_v1.0...</p>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-slate-200 dark:border-slate-800 gap-4">
+<div class="flex gap-6 text-slate-400">
+<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">code</span></a>
+<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">groups</span></a>
+</div>
+<p class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">
+                    © 2024 BLUEPRINT GALLERY INC. ALL RIGHTS RESERVED. [LIC_33420]
+                </p>
+</div>
+</div>
+</footer>
+</body></html>

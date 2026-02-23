@@ -2,8 +2,9 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { useEffect } from 'react';
 import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
-import Privacy from './pages/Privacy';
+import About from './pages/About';
 import Support from './pages/Support';
+import Privacy from './pages/Privacy';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -30,8 +31,9 @@ function App() {
       <MainLayout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/about" element={<About />} />
           <Route path="/support" element={<Support />} />
+          <Route path="/privacy" element={<Privacy />} />
         </Routes>
       </MainLayout>
     </Router>
