@@ -6,6 +6,7 @@ import About from './pages/About';
 import Support from './pages/Support';
 import Privacy from './pages/Privacy';
 
+
 // Scroll to top on route change
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
