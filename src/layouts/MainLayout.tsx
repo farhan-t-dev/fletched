@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+// import { Button } from '../components/ui/Button';
+// import { Badge } from '../components/ui/Badge';
+import { AppStoreButton } from '../components/ui/AppStoreButton';
+import { CgFacebook } from "react-icons/cg";
+import { BsInstagram, BsLinkedin, BsTwitter } from "react-icons/bs";
 
 const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,31 +27,50 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    { name: 'Support', path: '/support' },
-    { name: 'Privacy', path: '/privacy' },
+    { name: 'Features', path: '/features' },
+    { name: 'FAQ', path: '/faq' },
+    { name: 'Contact', path: '/support' },
   ];
 
   const isActive = (path: string) => {
     return location.pathname === path;
   };
 
+  const isHomePage = location.pathname === '/';
+  const isAboutPage = location.pathname === '/about';
+  const hasHeroImage = isHomePage || isAboutPage;
+
+  const headerBg = scrolled 
+    ? "bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/5 shadow-sm" 
+    : hasHeroImage 
+      ? "bg-transparent border-transparent" 
+      : "bg-background-light dark:bg-background-dark border-b border-primary/5";
+
+  const textColor = scrolled || !hasHeroImage 
+    ? "text-slate-500 dark:text-slate-400" 
+    : "text-slate-200";
+
+  const logoColor = scrolled || !hasHeroImage 
+    ? "text-primary" 
+    : "text-white";
+
   return (
     <div className="min-h-screen bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-100 selection:bg-primary/20 selection:text-primary transition-colors">
-      <header className={`sticky top-0 z-50 w-full border-b border-primary/5 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md transition-all ${scrolled ? 'py-2 shadow-sm' : 'py-0'}`}>
-        <nav className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 text-primary group">
-            <div className="size-8 flex items-center justify-center border-2 border-primary rounded-lg group-hover:rotate-6 transition-transform">
-              <span className="material-symbols-outlined text-xl font-bold">architecture</span>
+      <header className={`fixed top-0 z-50 w-full transition-all duration-500 ${scrolled ? 'py-3' : 'py-6'} ${headerBg}`}>
+        <nav className="max-w-7xl mx-auto px-4 flex items-center justify-between">
+          <Link to="/" className={`flex items-center gap-3 group ${logoColor} transition-colors`}>
+            <div className={`size-10 flex items-center justify-center border-2 rounded-xl group-hover:rotate-6 transition-transform ${scrolled || !hasHeroImage ? 'border-primary' : 'border-white'}`}>
+              <span className="material-symbols-outlined text-2xl font-bold">architecture</span>
             </div>
-            <span className="text-xl font-black tracking-tighter">FLETCHED</span>
+            <span className="text-2xl font-black tracking-tighter uppercase">FLETCHED</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-8 text-[10px] font-black tracking-widest uppercase">
+          <div className="hidden lg:flex items-center gap-2">
             {navLinks.map((link) => (
               <Link 
                 key={link.name} 
                 to={link.path} 
-                className={`transition-colors hover:text-primary ${isActive(link.path) ? 'text-primary' : 'text-slate-500 dark:text-slate-400'}`}
+                className={`px-4 py-2 rounded-lg text-[10px] font-black tracking-widest uppercase transition-all hover:bg-primary/10 ${isActive(link.path) ? (scrolled || !hasHeroImage ? 'text-primary' : 'text-primary-light font-bold') : textColor}`}
               >
                 {link.name}
               </Link>
@@ -54,12 +78,10 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </div>
 
           <div className="flex items-center gap-4">
-            <button className="hidden md:block bg-primary text-white px-5 py-2 rounded-lg font-bold text-xs tracking-wide hover:brightness-110 transition-all shadow-lg shadow-primary/20">
-              DOWNLOAD APP
-            </button>
+            <AppStoreButton variant="navbar" className="hidden md:flex" />
             <button
               onClick={toggleMenu}
-              className="md:hidden inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition-colors text-slate-600 dark:text-slate-400"
+              className={`lg:hidden inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition-colors ${scrolled || !hasHeroImage ? 'text-slate-600 dark:text-slate-400' : 'text-white'}`}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -71,24 +93,75 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-x-0 top-16 z-40 md:hidden bg-background-light dark:bg-background-dark border-b border-primary/10 p-6 flex flex-col space-y-4 shadow-xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] lg:hidden bg-background-light/98 dark:bg-background-dark/98 backdrop-blur-2xl flex flex-col p-8 overflow-y-auto"
           >
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className={`text-lg font-bold tracking-tight ${isActive(link.path) ? 'text-primary' : 'text-slate-900 dark:text-slate-100'}`}
+            {/* Menu Header */}
+            <div className="flex items-center justify-between mb-16">
+              <div className="flex items-center gap-3 text-primary">
+                <div className="size-10 flex items-center justify-center border-2 border-primary rounded-xl">
+                  <span className="material-symbols-outlined text-2xl font-bold">architecture</span>
+                </div>
+                <span className="text-2xl font-black tracking-tighter uppercase">FLETCHED</span>
+              </div>
+              <button 
                 onClick={() => setIsMenuOpen(false)}
+                className="size-12 rounded-full bg-primary/5 flex items-center justify-center text-primary border border-primary/10"
               >
-                {link.name}
-              </Link>
-            ))}
-            <button className="w-full bg-primary text-white px-5 py-3 rounded-lg font-bold text-sm tracking-wide" onClick={() => setIsMenuOpen(false)}>
-              DOWNLOAD APP
-            </button>
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+
+            {/* Navigation Links */}
+            <div className="flex flex-col space-y-6 flex-grow">
+              {navLinks.map((link, i) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  <Link
+                    to={link.path}
+                    className={`group flex items-end justify-between py-2 border-b-2 transition-all ${isActive(link.path) ? 'border-primary' : 'border-primary/5'}`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <div className="flex flex-col">
+                      <span className="text-[10px] font-mono font-black text-primary/40 mb-1 uppercase tracking-widest">
+                        NAV_0{i + 1}
+                      </span>
+                      <span className={`text-4xl font-black uppercase tracking-tighter ${isActive(link.path) ? 'text-primary' : 'text-slate-900 dark:text-slate-100'}`}>
+                        {link.name}
+                      </span>
+                    </div>
+                    {isActive(link.path) && (
+                       <span className="material-symbols-outlined text-primary text-3xl font-bold mb-2">
+                         target
+                       </span>
+                    )}
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Menu Footer */}
+            <div className="mt-12 pt-8 border-t border-primary/10">
+               <div className="flex flex-col gap-6">
+                 <div className="flex items-center gap-2">
+                    <div className="size-2 rounded-full bg-primary animate-pulse"></div>
+                    <span className="text-[10px] font-mono font-black text-slate-500 uppercase tracking-widest">SYSTEM_VERSION: v1.0.8_STABLE</span>
+                 </div>
+                 <AppStoreButton className="w-full" variant="slate" />
+               </div>
+            </div>
+
+            {/* Background Decorative Element */}
+            <div className="absolute bottom-0 right-0 p-10 opacity-5 pointer-events-none">
+               <span className="material-symbols-outlined text-[20rem] font-bold text-primary">architecture</span>
+            </div>
+            <div className="absolute inset-0 blueprint-grid opacity-10 pointer-events-none"></div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -97,96 +170,63 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         {children}
       </main>
 
-      <footer className="bg-background-light dark:bg-background-dark border-t border-primary/10 pt-20 pb-8 px-4 blueprint-grid transition-colors relative overflow-hidden">
-        {/* Decorative Annotation Tag */}
-        <div className="absolute top-0 right-10 bg-primary/5 border-x border-b border-primary/10 px-3 py-1 text-[8px] font-mono text-primary uppercase tracking-[0.2em] hidden md:block">
-          Footer_Module [Ref: 0x4A67]
-        </div>
-
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 mb-20">
-            <div className="col-span-2 space-y-6">
-              <div className="flex items-center gap-2 text-primary">
-                <div className="size-8 flex items-center justify-center border-2 border-primary rounded-lg">
-                  <span className="material-symbols-outlined text-xl font-bold">architecture</span>
-                </div>
-                <span className="text-xl font-black tracking-tighter uppercase">Fletched</span>
-              </div>
-              <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-xs">
-                Designing the future of mobile archery ballistics with architectural precision and modern aesthetics. Calibrated for the backcountry.
-              </p>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/5 border border-primary/10">
-                <span className="size-1.5 rounded-full bg-primary-light animate-pulse"></span>
-                <span className="text-[10px] font-mono font-bold text-primary/70 uppercase tracking-widest">System Status: Active</span>
-              </div>
+      <footer className="bg-background-light dark:bg-background-dark border-t border-primary/5 w-full py-16 px-6 relative overflow-hidden transition-colors">
+        <div className="absolute inset-0 blueprint-grid opacity-15 pointer-events-none"></div>
+        <div className="max-w-5xl mx-auto flex flex-col items-center relative z-10">
+          
+          {/* Subtle Logo Signature */}
+          <div className="flex items-center gap-2 text-primary/40 mb-12 group hover:text-primary transition-colors duration-500">
+            <div className="size-6 flex items-center justify-center border border-current rounded-md">
+              <span className="material-symbols-outlined text-sm font-bold">architecture</span>
             </div>
+            <span className="text-lg font-black tracking-[0.3em] uppercase">Fletched</span>
+          </div>
 
-            <div>
-              <h4 className="font-bold text-xs uppercase tracking-widest mb-8 text-slate-900 dark:text-white border-b border-primary/10 pb-2">Product</h4>
-              <ul className="space-y-4 text-sm text-slate-500">
-                <li><Link className="hover:text-primary transition-colors flex items-center gap-2" to="/"><span className="material-symbols-outlined text-xs">home</span> Home</Link></li>
-                <li><Link className="hover:text-primary transition-colors flex items-center gap-2" to="/about"><span className="material-symbols-outlined text-xs">info</span> About Us</Link></li>
-                <li><Link className="hover:text-primary transition-colors flex items-center gap-2" to="/support"><span className="material-symbols-outlined text-xs">support_agent</span> Support</Link></li>
-                <li><a className="hover:text-primary transition-colors flex items-center gap-2" href="#"><span className="material-symbols-outlined text-xs">new_releases</span> Changelog</a></li>
-              </ul>
-            </div>
+          {/* Minimal Navigation */}
+          <div className="flex justify-center gap-x-10 gap-y-6 w-full flex-wrap mb-12">
+            {[...navLinks, { name: 'Privacy', path: '/privacy' }].map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 hover:text-primary transition-all duration-300"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
 
-            <div>
-              <h4 className="font-bold text-xs uppercase tracking-widest mb-8 text-slate-900 dark:text-white border-b border-primary/10 pb-2">Legal</h4>
-              <ul className="space-y-4 text-sm text-slate-500">
-                <li><Link className="hover:text-primary transition-colors flex items-center gap-2" to="/privacy"><span className="material-symbols-outlined text-xs">security</span> Privacy Policy</Link></li>
-                <li><a className="hover:text-primary transition-colors flex items-center gap-2" href="#"><span className="material-symbols-outlined text-xs">gavel</span> Terms of Service</a></li>
-                <li><a className="hover:text-primary transition-colors flex items-center gap-2" href="#"><span className="material-symbols-outlined text-xs">description</span> License</a></li>
-              </ul>
-            </div>
+          {/* Surgical Social Icons */}
+          <div className="flex items-center gap-8 mb-16">
+            {[
+              { icon: <CgFacebook />, label: 'Facebook' },
+              { icon: <BsTwitter />, label: 'Twitter' },
+              { icon: <BsInstagram />, label: 'Instagram' },
+              { icon: <BsLinkedin />, label: 'LinkedIn' }
+            ].map((social, i) => (
+              <a 
+                key={i}
+                href="#"
+                className="text-lg text-slate-300 dark:text-slate-700 hover:text-primary transition-all duration-300"
+                aria-label={social.label}
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
 
-            <div className="col-span-2">
-              <h4 className="font-bold text-xs uppercase tracking-widest mb-8 text-slate-900 dark:text-white border-b border-primary/10 pb-2">Stay Annotated</h4>
-              <p className="text-xs text-slate-500 mb-6 italic">Subscribe to our technical field logs for the latest updates.</p>
-              <form className="flex gap-2">
-                <input 
-                  className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm flex-1 focus:ring-2 focus:ring-primary/20 focus:border-primary p-3 outline-none transition-all dark:text-white" 
-                  placeholder="email@address.spec" 
-                  type="email"
-                />
-                <button className="bg-primary text-white px-4 rounded-lg flex items-center justify-center hover:brightness-110 transition-all shadow-lg shadow-primary/20 group">
-                  <span className="material-symbols-outlined text-sm group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">send</span>
-                </button>
-              </form>
-              <p className="mt-4 text-[9px] text-slate-400 font-mono italic uppercase flex items-center gap-2">
-                <span className="material-symbols-outlined text-[10px]">terminal</span> 
-                Subscribing to BUILD_LOGS_v1.0.8...
-              </p>
+          {/* Technical Signature */}
+          <div className="w-full pt-12 border-t border-primary/5 flex flex-col items-center gap-4">
+            <div className="flex items-center gap-3">
+               <div className="size-1.5 rounded-full bg-primary/20 animate-pulse"></div>
+               <p className="text-[9px] font-mono font-bold text-slate-400 dark:text-slate-600 uppercase tracking-[0.4em]">
+                 © {new Date().getFullYear()} FLETCHED ARCHERY INC.
+               </p>
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-slate-200 dark:border-slate-800 gap-6">
-            <div className="flex gap-4">
-              {[
-                { icon: 'public', label: 'Web' },
-                { icon: 'code', label: 'GitHub' },
-                { icon: 'groups', label: 'Community' },
-                { icon: 'share', label: 'Social' }
-              ].map((social) => (
-                <a 
-                  key={social.label} 
-                  href="#" 
-                  className="size-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-400 hover:text-primary hover:border-primary/30 transition-all group"
-                  title={social.label}
-                >
-                  <span className="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">{social.icon}</span>
-                </a>
-              ))}
-            </div>
-            
-            <div className="text-center md:text-right space-y-1">
-              <p className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">
-                © {new Date().getFullYear()} FLETCHED ARCHERY INC. [LIC_33420]
-              </p>
-              <p className="text-[8px] font-mono text-slate-400 uppercase tracking-tighter opacity-50">
-                BUILD_HASH: 7a82bc1f | STACK: REACT_TS_VITE_TW4
-              </p>
-            </div>
+          {/* Architectural Annotation */}
+          <div className="absolute bottom-4 right-4 text-[7px] font-mono text-primary/10 uppercase tracking-[0.5em] hidden md:block select-none">
+             REF_0xFOOTER
           </div>
         </div>
       </footer>
