@@ -1,6 +1,5 @@
 import React from 'react';
 import AnimatedSection from '../components/ui/AnimatedSection';
-import { Badge } from '../components/ui/Badge';
 import { Card, CardContent } from '../components/ui/Card';
 import { TypographyH1, TypographyH2, TypographyLead, TypographyP, TypographyBlockquote } from '../components/ui/Typography';
 import { AppStoreButton } from '../components/ui/AppStoreButton';
