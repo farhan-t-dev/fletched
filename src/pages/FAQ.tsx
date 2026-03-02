@@ -1,64 +1,61 @@
 import React, { useState } from 'react';
 import AnimatedSection from '../components/ui/AnimatedSection';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '../components/ui/Accordion';
-import { Badge } from '../components/ui/Badge';
-import { Button } from '../components/ui/Button';
+import { Link } from 'react-router-dom';
 
 const FAQ: React.FC = () => {
   const [openItem, setOpenItem] = useState<string | null>("item-0");
 
   const faqs = [
     {
-      q: 'How accurate is the ballistics generation?',
-      a: 'Our export engine generates production-ready archery specs with 99.9% accuracy. It maps blueprint constraints directly to field conditions and utilizes standard kinetic energy and momentum formulas refined for modern archery tackle.'
+      q: 'How accurate is the ballistics engine?',
+      a: 'Fletched utilizes standard kinetic energy and momentum formulas refined for modern archery equipment. While environmental factors always play a role, our mathematical models provide 99.9% calculation accuracy based on your specific data inputs.'
     },
     {
-      q: 'Can I import existing setup data?',
-      a: 'Currently, Fletched is a dedicated drafting tool focused on precision from scratch. We support PNG/SVG reference overlays to help you reconstruct setups accurately within the app environment.'
+      q: 'Can I import data from my bow shop?',
+      a: 'Yes. You can manually input any specifications provided by your local bow shop, including chronographed speeds and measured component weights, to ensure your digital profile matches your physical setup.'
     },
     {
-      q: 'Does it support collaborative real-time editing?',
-      a: 'Yes. Multiple archers can work on the same .spec file simultaneously with sub-millisecond cursor synchronization. Perfect for teams and bow shops.'
+      q: 'What exactly is the "Flinch Rate"?',
+      a: 'The Flinch Rate is our proprietary calculation that quantifies an animal\'s potential reaction to sound and movement. It calculates the likelihood of an impact shift based on your arrow\'s speed and the distance to the target.'
     },
     {
-      q: 'What is the "Flinch Rate"?',
-      a: 'The Flinch Rate is our proprietary calculation for "string jump." It quantifies how an animal might react to the sound or sight of an incoming arrow, calculating the likelihood of impact shift based on distance and arrow speed.'
+      q: 'Does the app work without cellular service?',
+      a: 'Yes. Fletched is designed for the backcountry. All core ballistics calculations and your saved equipment profiles are processed locally on your device, requiring no internet connection for field use.'
     },
     {
-      q: 'Is an internet connection required in the field?',
-      a: 'No. Fletched is designed for the backcountry. All core ballistics calculations and profile data are stored locally on your device. Syncing only occurs when you regain cellular or Wi-Fi service.'
+      q: 'Is my data secure and private?',
+      a: 'Absolutely. Your technical archery data is encrypted and stored according to our strict security protocols. We do not sell personal identifying information to third parties. You can read more in our Security Policy.'
     }
   ];
 
   return (
-    <div className="flex flex-col bg-background-light dark:bg-background-dark pt-32 pb-20 overflow-hidden relative min-h-screen transition-colors blueprint-grid">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
-        <AnimatedSection className="mb-16 text-center">
-          <Badge variant="default" className="mb-6">
-            <span className="material-symbols-outlined text-[12px] mr-1">help_center</span> SYSTEM.SUPPORT [v1.0]
-          </Badge>
-          <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-slate-800 dark:text-white mb-6">
-            Frequently <span className="text-primary italic">Asked.</span>
+    <div className="bg-white dark:bg-slate-950 min-h-screen pt-32 pb-20 transition-colors">
+      <div className="max-w-4xl mx-auto px-6 lg:px-8">
+        
+        {/* Header Section */}
+        <AnimatedSection className="text-center mb-20">
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">
+            Frequently Asked Questions
           </h1>
-          <p className="text-slate-500 font-medium text-xl leading-relaxed">
-            Technical support and architectural documentation for the Fletched ballistics engine.
+          <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+            Find answers to technical questions about the Fletched ballistics engine and field usage.
           </p>
         </AnimatedSection>
 
-        <AnimatedSection className="mb-20">
-          <Accordion>
+        {/* FAQ Accordion Section */}
+        <AnimatedSection className="mb-24">
+          <Accordion className="border-t border-slate-100 dark:border-slate-800">
             {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`item-${i}`}>
+              <AccordionItem key={i} value={`item-${i}`} className="border-b border-slate-100 dark:border-slate-800">
                 <AccordionTrigger 
                   isOpen={openItem === `item-${i}`}
                   onClick={() => setOpenItem(openItem === `item-${i}` ? null : `item-${i}`)}
+                  className="py-6 text-left hover:text-primary transition-colors font-bold text-slate-900 dark:text-white md:text-lg"
                 >
-                  <span className="flex items-center gap-4">
-                    <span className="text-primary/40 font-mono text-sm font-bold">[{i+1 < 10 ? `0${i+1}` : i+1}]</span>
-                    {faq.q}
-                  </span>
+                  {faq.q}
                 </AccordionTrigger>
-                <AccordionContent isOpen={openItem === `item-${i}`}>
+                <AccordionContent isOpen={openItem === `item-${i}`} className="pb-8 text-slate-600 dark:text-slate-400 leading-relaxed">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>
@@ -66,13 +63,21 @@ const FAQ: React.FC = () => {
           </Accordion>
         </AnimatedSection>
 
-        <AnimatedSection className="text-center p-12 bg-white dark:bg-slate-800 border-2 border-dashed border-primary/20 rounded-[3rem] shadow-xl">
-           <h3 className="text-3xl font-black uppercase tracking-tighter mb-4 text-slate-900 dark:text-white">Still have questions?</h3>
-           <p className="text-slate-500 font-medium mb-10 max-w-md mx-auto">Our technical field team is standing by to assist with your specific configuration.</p>
-           <Button variant="default" size="lg">
-              Contact Technical Support
-           </Button>
+        {/* Contact CTA Section */}
+        <AnimatedSection className="text-center p-10 md:p-16 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] border border-slate-100 dark:border-slate-800">
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">Still have questions?</h3>
+          <p className="text-slate-500 dark:text-slate-400 font-medium mb-10 max-w-sm mx-auto">
+            Our expert support team is ready to help with your specialized equipment configurations.
+          </p>
+          <Link 
+            to="/support" 
+            className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-bold rounded-xl hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-primary/10"
+          >
+            <span>Contact Support</span>
+            <span className="material-symbols-outlined text-sm">arrow_forward</span>
+          </Link>
         </AnimatedSection>
+
       </div>
     </div>
   );

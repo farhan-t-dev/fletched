@@ -9,10 +9,9 @@ import { AppStoreButton } from '../components/ui/AppStoreButton';
 
 const Home: React.FC = () => {
   const hubs = [
-    { name: 'Mission', path: '/about', icon: 'info', desc: 'Our creed and commitment to ethical hunting.' },
-    { name: 'Features', path: '/features', icon: 'architecture', desc: 'The technical capabilities of our ballistics engine.' },
-    { name: 'Process', path: '/process', icon: 'settings_suggest', desc: 'How we turn raw data into lethal precision.' },
-    { name: 'Support', path: '/faq', icon: 'help_center', desc: 'Frequently asked questions and field support.' },
+    { name: 'About', path: '/about', icon: 'info', desc: 'Our creed and commitment to ethical hunting.' },
+    { name: 'FAQ', path: '/faq', icon: 'help_center', desc: 'Frequently asked questions and technical guidance.' },
+    { name: 'Support', path: '/support', icon: 'support_agent', desc: 'Direct field support and specialized inquiries.' },
   ];
 
   return (
@@ -34,9 +33,6 @@ const Home: React.FC = () => {
 
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10 w-full">
           <AnimatedSection className="space-y-8 relative z-10">
-            <Badge variant="default" className="px-4 py-1.5 bg-primary/20 text-primary-light border-primary/30">
-              <span className="material-symbols-outlined text-[14px] mr-2">analytics</span> PRODUCTION_ENV / v1.0.8
-            </Badge>
             <TypographyH1 className="text-white">
               Archery <br />
               <span className="text-primary-light italic">Ballistics.</span>
@@ -55,7 +51,7 @@ const Home: React.FC = () => {
               <div className="relative h-full flex flex-col p-6 items-center justify-center text-center bg-white dark:bg-slate-950">
                 <div className="absolute inset-0 blueprint-grid opacity-10"></div>
                 <div className="size-24 rounded-full border-4 border-dashed border-primary/30 flex items-center justify-center animate-spin-slow mb-8">
-                  <span className="material-symbols-outlined text-5xl text-primary font-bold">architecture</span>
+                  <img src="/Fletched-logo.png" alt="Fletched Logo" className="size-16 object-contain" />
                 </div>
                 <h4 className="text-3xl font-black text-slate-800 dark:text-white uppercase tracking-tighter">Fletched</h4>
                 <Badge variant="outline" className="mt-4 border-primary/40 text-primary">TARGET_ACQUIRED</Badge>
@@ -70,7 +66,6 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <Badge variant="outline" className="mb-4 border-primary/30 text-primary">SYSTEM_NAVIGATOR [v2.1]</Badge>
               <TypographyH2 className="text-slate-800 dark:text-white">Central <span className="text-primary italic">Command.</span></TypographyH2>
             </div>
             <TypographyP className="max-w-md mt-0 text-slate-500 font-mono text-xs uppercase tracking-widest italic">
@@ -78,7 +73,7 @@ const Home: React.FC = () => {
             </TypographyP>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             {hubs.map((hub, i) => (
               <AnimatedSection key={i} delay={i * 0.1}>
                 <Link to={hub.path}>

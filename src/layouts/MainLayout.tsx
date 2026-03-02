@@ -27,7 +27,6 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    { name: 'Features', path: '/features' },
     { name: 'FAQ', path: '/faq' },
     { name: 'Contact', path: '/support' },
   ];
@@ -41,27 +40,27 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const hasHeroImage = isHomePage || isAboutPage;
 
   const headerBg = scrolled 
-    ? "bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/5 shadow-sm" 
+    ? "bg-[#0a0f0a]/80 backdrop-blur-md border-b border-white/5 shadow-sm" 
     : hasHeroImage 
       ? "bg-transparent border-transparent" 
-      : "bg-background-light dark:bg-background-dark border-b border-primary/5";
+      : "bg-[#0a0f0a] border-b border-white/5";
 
   const textColor = scrolled || !hasHeroImage 
-    ? "text-slate-500 dark:text-slate-400" 
-    : "text-slate-200";
-
-  const logoColor = scrolled || !hasHeroImage 
-    ? "text-primary" 
+    ? "text-slate-300" 
     : "text-white";
+
+  const logoColor = "text-white";
 
   return (
     <div className="min-h-screen bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-100 selection:bg-primary/20 selection:text-primary transition-colors">
       <header className={`fixed top-0 z-50 w-full transition-all duration-500 ${scrolled ? 'py-3' : 'py-6'} ${headerBg}`}>
         <nav className="max-w-7xl mx-auto px-4 flex items-center justify-between">
           <Link to="/" className={`flex items-center gap-3 group ${logoColor} transition-colors`}>
-            <div className={`size-10 flex items-center justify-center border-2 rounded-xl group-hover:rotate-6 transition-transform ${scrolled || !hasHeroImage ? 'border-primary' : 'border-white'}`}>
-              <span className="material-symbols-outlined text-2xl font-bold">architecture</span>
-            </div>
+            <img 
+              src="/Fletched-logo.png" 
+              alt="Fletched Logo" 
+              className="size-10 object-contain group-hover:rotate-6 transition-transform" 
+            />
             <span className="text-2xl font-black tracking-tighter uppercase">FLETCHED</span>
           </Link>
 
@@ -101,9 +100,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             {/* Menu Header */}
             <div className="flex items-center justify-between mb-16">
               <div className="flex items-center gap-3 text-primary">
-                <div className="size-10 flex items-center justify-center border-2 border-primary rounded-xl">
-                  <span className="material-symbols-outlined text-2xl font-bold">architecture</span>
-                </div>
+                <img src="/Fletched-logo.png" alt="Fletched Logo" className="size-10 object-contain" />
                 <span className="text-2xl font-black tracking-tighter uppercase">FLETCHED</span>
               </div>
               <button 
@@ -159,7 +156,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
             {/* Background Decorative Element */}
             <div className="absolute bottom-0 right-0 p-10 opacity-5 pointer-events-none">
-               <span className="material-symbols-outlined text-[20rem] font-bold text-primary">architecture</span>
+               <img src="/Fletched-logo.png" alt="" className="w-[20rem] h-auto object-contain grayscale" />
             </div>
             <div className="absolute inset-0 blueprint-grid opacity-10 pointer-events-none"></div>
           </motion.div>
@@ -176,15 +173,13 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           
           {/* Subtle Logo Signature */}
           <div className="flex items-center gap-2 text-primary/40 mb-12 group hover:text-primary transition-colors duration-500">
-            <div className="size-6 flex items-center justify-center border border-current rounded-md">
-              <span className="material-symbols-outlined text-sm font-bold">architecture</span>
-            </div>
+            <img src="/Fletched-logo.png" alt="Fletched Logo" className="size-6 object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all" />
             <span className="text-lg font-black tracking-[0.3em] uppercase">Fletched</span>
           </div>
 
           {/* Minimal Navigation */}
           <div className="flex justify-center gap-x-10 gap-y-6 w-full flex-wrap mb-12">
-            {[...navLinks, { name: 'Privacy', path: '/privacy' }].map((link) => (
+            {[...navLinks, { name: 'Privacy', path: '/privacy' }, { name: 'Security', path: '/security' }, { name: 'Terms', path: '/terms' }].map((link) => (
               <Link
                 key={link.name}
                 to={link.path}

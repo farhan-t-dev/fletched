@@ -12,9 +12,6 @@ const About: React.FC = () => {
         
         {/* Compact Header */}
         <AnimatedSection className="mb-16 text-center">
-           <Badge variant="default" className="mb-6">
-              <span className="material-symbols-outlined text-[12px] mr-1">info</span> MISSION_SPEC [v2.0]
-           </Badge>
            <TypographyH1 className="mb-6 text-slate-800 dark:text-white lg:text-6xl">
              Friends Don’t Let Friends <br />
              <span className="text-primary italic text-4xl lg:text-5xl">Shoot Bad Arrows.</span>
@@ -87,7 +84,7 @@ const About: React.FC = () => {
         <AnimatedSection className="mb-16">
            <Card className="bg-slate-900 dark:bg-slate-800 text-white border-none rounded-[2rem] p-10 relative overflow-hidden shadow-xl">
               <div className="absolute top-0 right-0 p-10 opacity-5">
-                 <span className="material-symbols-outlined text-[10rem] font-bold">architecture</span>
+                 <img src="/Fletched-logo.png" alt="" className="w-[15rem] h-auto object-contain grayscale invert" />
               </div>
               <div className="relative z-10 text-center max-w-2xl mx-auto">
                  <TypographyBlockquote className="border-none pl-0 italic text-2xl md:text-3xl text-white mb-6 leading-tight">

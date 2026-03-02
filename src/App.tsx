@@ -5,8 +5,8 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Support from './pages/Support';
 import Privacy from './pages/Privacy';
-import Features from './pages/Features';
-import Process from './pages/Process';
+import Security from './pages/Security';
+import Terms from './pages/Terms';
 import FAQ from './pages/FAQ';
 
 // Scroll to top on route change
@@ -35,11 +35,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/features" element={<Features />} />
-          <Route path="/process" element={<Process />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/support" element={<Support />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/security" element={<Security />} />
+          <Route path="/terms" element={<Terms />} />
         </Routes>
       </MainLayout>
     </Router>
