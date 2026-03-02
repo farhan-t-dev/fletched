@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AnimatedSection from '../components/ui/AnimatedSection';
 import { Card, CardContent } from '../components/ui/Card';
@@ -8,6 +8,7 @@ import { TypographyH1, TypographyH2, TypographyH3, TypographyP } from '../compon
 import { AppStoreButton } from '../components/ui/AppStoreButton';
 
 const Home: React.FC = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
   const hubs = [
     { name: 'About', path: '/about', icon: 'info', desc: 'Our creed and commitment to ethical hunting.' },
     { name: 'FAQ', path: '/faq', icon: 'help_center', desc: 'Frequently asked questions and technical guidance.' },
@@ -17,13 +18,14 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col overflow-hidden relative blueprint-grid min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-32 px-4 min-h-screen flex items-center overflow-hidden">
+      <section className="relative pt-32 pb-32 px-4 min-h-screen flex items-center overflow-hidden bg-slate-950">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
             src="/athletic-female-aiming-with-bow-arrow-towards-trees.jpg" 
             alt="Archer aiming in the woods" 
-            className="w-full h-full object-cover"
+            onLoad={() => setImageLoaded(true)}
+            className={`w-full h-full object-cover transition-opacity duration-1000 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
           />
           <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[1px]"></div>
           {/* Smooth transition to next section */}
